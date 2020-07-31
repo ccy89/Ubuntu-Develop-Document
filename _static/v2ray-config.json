@@ -1,0 +1,72 @@
+{
+  "inbounds":[
+    {
+      "port": 1080,
+      "listen":"127.0.0.1",
+      "protocol":"socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings":{
+        "auth":"noauth",
+        "udp": true,
+        "ip":"127.0.0.1"
+      },
+      "tag":"socket-in"
+    },
+    {
+      "listen":"127.0.0.1",
+      "port": 8118,
+      "protocol":"http",
+      "settings":{
+        "timeout": 300,
+        "allowTransparent": false,
+        "userLevel": 0
+      },
+      "tag":"http-in"
+    }
+  ],
+  "outbounds":[
+    {
+      "protocol":"vmess",
+      "settings":{
+        "vnext":[
+          {
+            "address":"服务器绑定域名",
+            "port":443,
+            "users":[
+              {
+                "id":"服务器的uuid",
+                "alterId":233
+              }
+            ]
+          }
+        ]
+      },
+      "tag":"out-0",
+      "streamSettings":{
+        "network":"ws",
+        "security":"tls",
+        "wsSettings":{
+          "path":"/"
+        },
+        "tlsSettings":{
+          "serverName":"服务器绑定域名"
+        }
+      }
+    }
+  ],
+  "routing":{
+    "domainStrategy":"IPOnDemand",
+    "rules":[
+      {
+        "type":"field",
+        "ip":[
+          "geoip:private"
+        ],
+        "outboundTag":"direct"
+      }
+    ]
+  }
+}
