@@ -39,10 +39,10 @@ Ubuntu界面美化(可选)
 
 :orange:`推荐插件：`
 
-#. **User Themes**：允许 ``Gnome Shell`` 使用 桌面的theme 
-#. **Dash to Dock**： 将 ``Ubuntu`` 的 ``Dash`` 改成 ``Dock`` 风格
-#. **Hide Top Bar**：可以隐藏顶栏
-#. **Appfolders Management extension**：可以对 ``Ubuntu`` 的应用分组，``Ubuntu 20.04`` 自带该功能。
+* **User Themes**：允许 ``Gnome Shell`` 使用 桌面的 ``Theme`` 
+* **Dash to Dock**： 将 ``Ubuntu`` 的 ``Dash`` 改成 ``Dock`` 风格
+* **Hide Top Bar**：可以隐藏顶栏
+* **Appfolders Management extension**：可以对 ``Ubuntu`` 的应用分组，``Ubuntu 20.04`` 自带该功能。
 
 
 修改Ubuntu桌面主题
@@ -52,7 +52,7 @@ Ubuntu界面美化(可选)
 .. image:: /_static/images/gnome-5.png
   :align: center
 
-``Ubuntu`` 内置一些桌面主题，也可以在网上(`pling-theme <https://www.pling.com/browse/cat/366/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/themes`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
+``Ubuntu`` 内置一些桌面主题（一般都挺丑的），也可以在网上(`pling-theme <https://www.pling.com/browse/cat/366/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/themes`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
 
 修改Ubuntu Icon(图标)主题
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,7 +61,7 @@ Ubuntu界面美化(可选)
 .. image:: /_static/images/gnome-6.png
   :align: center
 
-``Ubuntu`` 内置一些 ``Icon`` 主题，也可以在网上(`pling-icon <https://www.pling.com/browse/cat/132/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/icons`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
+``Ubuntu`` 内置一些 ``Icon`` 主题（一般都挺丑的），也可以在网上(`pling-icon <https://www.pling.com/browse/cat/132/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/icons`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
 
 
 修改桌面壁纸主题

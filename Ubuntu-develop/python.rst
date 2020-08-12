@@ -1,11 +1,11 @@
 Python开发环境搭建
 ====================
 
-Python 是一种广泛使用的解释型、高级编程、通用型编程语言，由 **Guido van Rossum** 创造。
+``Python`` 是一种广泛使用的解释型、高级编程、通用型编程语言，由 `Guido van Rossum <https://en.wikipedia.org/wiki/Guido_van_Rossum>`_ 创造。
 
-``Anaconda`` 是一个用于科学计算的 ``Python`` 发行版，支持 ``Linux``, ``Mac``, ``Windows``, 包含了众多流行的科学计算、数据分析的 ``Python`` 包。
+`Anaconda <https://www.anaconda.com/>`_ 是一个用于科学计算的 ``Python`` 发行版，支持 ``Linux``, ``Mac``, ``Windows``, 包含了众多流行的科学计算、数据分析的 ``Python`` 包。
 
-``Miniconda`` 是一个 ``Anaconda`` 的轻量级替代，默认只包含了 ``Python`` 和 ``conda``，但是可以通过 ``pip`` 和 ``conda`` 来安装所需要的包。
+``Miniconda`` 是一个 ``Anaconda`` 的轻量级替代，默认只包含了 ``Python`` 和 ``conda``，但是可以通过 ``pip`` 和 ``conda`` 命令来安装所需要的包。
 
 ``conda`` 可以隔离式地管理 ``Python`` 虚拟环境，各个虚拟环境之间互不影响。 本教程利用 ``Miniconda`` 管理 ``Python`` 开发环境。
 
@@ -17,8 +17,8 @@ Python 是一种广泛使用的解释型、高级编程、通用型编程语言�
 
 .. code-block:: bash
 
-  bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
   # 按默认的安装到 $HOME/miniconda3 目录下即可
+  bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 
 3. 激活 ``conda`` 命令：
 
@@ -65,11 +65,12 @@ conda基本使用
 ---------------
 conda 在安装好后，自带一个名字叫 ``base`` 的虚拟环境。
 
-1. 激活/退出虚拟环境：
+激活/退出虚拟环境
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-  conda activate 环境名字
+  conda activate 环境名字   # 激活 虚拟环境
   
   # 例如 激活 base
   conda activate base 
@@ -77,12 +78,13 @@ conda 在安装好后，自带一个名字叫 ``base`` 的虚拟环境。
   conda deactivate  # 退出 当前虚拟环境
 
 
-2. 创建/删除 虚拟环境：
+创建/删除 虚拟环境
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-  conda create -n 环境名字 python=x.x
-  conda remove -n 环境名字 --all
+  conda create -n 环境名字 python=x.x   # 创建虚拟环境
+  conda remove -n 环境名字 --all        # 删除虚拟环境
   
   # 例如 创建一个基于 python3.6的 名字叫ccy的 虚拟环境
   conda create -n ccy python=3.6
@@ -90,25 +92,22 @@ conda 在安装好后，自带一个名字叫 ``base`` 的虚拟环境。
   # 例如 删除 名为ccy的 虚拟环境
   conda remove -n ccy --all
 
-3. 搜索/安装/删除包
+搜索/安装/删除包
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-  conda search 包名字
+  conda search 包名字   # 搜索包
   # 例如 搜索 opencv
   conda search opencv
 
-  conda install -n 环境名字 包名字
-  
+  conda install -n 环境名字 包名字    # 安装包
   # 例如 在虚拟环境ccy中 安装 opencv
   conda install -n ccy opencv 
-
   # 指定安装包的版本
   conda install -n ccy opencv=3.4.7
-
   # 指定安装包的源
   conda install --channel https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge -n base numpy
-
   # 从指定源安装指定版本的包
   conda install --channel https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge -n base numpy=1.19.1
 
@@ -122,7 +121,7 @@ VsCode开发Python
 ^^^^^^^^^^
 1. 安装 ``Python`` 插件： 插件支持 ``.py`` 的普通 ``Python`` 文件，也支持 ``.ipynb`` 的 ``Jupyter Notebook`` 文件
 
-2. 在想用的 ``Python`` 环境中安装 ``Python Linter``, ``Python`` 智能提示工具：
+2. 在想用的 ``Python`` 环境中安装 ``Python Linter``, ``Python`` 智能提示工具，例如：
 
 .. code-block:: bash
 

@@ -1,8 +1,10 @@
 C++开发环境搭建
 ================
-``C++`` 是一种被广泛使用的计算机程序设计语言，是20世纪80年代由 **Bjarne Stroustrup** 在贝尔实验室工作期间发明并实现。它是一种通用程序设计语言，支持多重编程模式，例如过程化程序设计、数据抽象、面向对象程序设计、泛型程序设计和设计模式等。
+``C++`` 是一种被广泛使用的计算机程序设计语言，是20世纪80年代由 `Bjarne Stroustrup <https://en.wikipedia.org/wiki/Bjarne_Stroustrup>`_ 在贝尔实验室工作期间发明并实现。
+它是一种通用程序设计语言，支持多重编程模式，例如过程化程序设计、数据抽象、面向对象程序设计、泛型程序设计和设计模式等。
 
-``C++`` 由 ``JTC1/SC22/WG21`` 的ISO工作组标准化。到目前为止，已经发布了 ``C++`` 标准的五个修订版，并且目前正在研究下一个修订版 ``C++ 20``：
+``C++`` 由 `JTC1/SC22/WG21 <http://www.open-std.org/jtc1/sc22/wg21/>`_ 的ISO工作组标准化。
+到目前为止，已经发布了 ``C++`` 标准的五个修订版，并且目前正在研究下一个修订版 ``C++ 20``：
 
 .. table:: 
   :align: center
@@ -21,21 +23,23 @@ C++开发环境搭建
 安装CMake
 ----------------------
 在 ``Linux`` 上开发 ``C++`` 基本都是 ``CMake`` 工程。因此要安装相应的工具链。
- 
+
+**安装Ubuntu官方源版本**
+
 .. code-block:: bash
 
-  # 不同Ubuntu系统官方源的cmake版本不一样
+  # 不同 Ubuntu 系统官方软件源的CMake版本不一样
   # Ubuntu 18.04  3.10
   # Ubuntu 20.04  3.16
   sudo apt install --no-install-recommends cmake make
 
-如果想要安装最新的 ``CMake``，需要添加 ``CMake`` 官方的源后再安装。
+**安装CMake官方源版本**。如果想要安装最新的 ``CMake``，需要添加 ``CMake`` 官方的源后再安装：
 
 .. code-block:: bash
 
-  wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
-  sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
-  sudo apt update
+  wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null  # 获取 gpg密钥
+  sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"   # 添加软件源
+  sudo apt update   # 更新软件源
   sudo apt install --no-install-recommends cmake make
 
 ``CMake`` 官方镜像源在国外，建议使用代理加速 ``apt`` 下载。
@@ -43,11 +47,31 @@ C++开发环境搭建
 
 安装编译器
 --------------
-目前跨平台的主流工具链有两套 ``GNU`` 和 ``LLVM``，对应的 ``C/C++`` 编译器分别为 ``GCC`` 和 ``Clang``，对应的代码 ``Debug`` 工具分别为 ``GDB`` 和 ``LLDB``，各官网详情看外部链接。
+目前跨平台的主流编译器工具链有两套 `GNU <https://www.gnu.org/home.en.html>`_ 和 `LLVM <http://llvm.org/>`_，
+对应的 ``C/C++`` 编译器分别为 `GCC <https://gcc.gnu.org/>`_ 和 `Clang <https://clang.llvm.org/>`_，
+对应的代码 ``Debug`` 工具分别为 `GDB <https://www.gnu.org/software/gdb/>`_ 和 `LLDB <https://lldb.llvm.org/>`_。
 
-:green:`(TODO 两者的优劣抽空写吧，一般用起来没啥区别)`，一般安装 ``GNU`` 工具链。
+GCC和Clang的简单对比
+^^^^^^^^^^^^^^^^^^^^^^
+``GCC`` 的优势：
 
-安装GNU
+#. 与 ``Clang`` 和 ``LLVM`` 相比，``GCC`` 支持更多的传统语言，例如 ``Ada``， ``Fortran`` 和 ``Go``。
+#. ``GCC`` 是编译 ``Linux`` 内核的唯一选择，也是绝大部分开源软件默认编译器。
+
+``Clang`` 的优势：
+
+#. 新兴语言偏好使用 ``LLVM`` 框架，例如 ``Swift``，``Rust``，``Julia`` 和 ``Ruby``。
+#. ``Clang`` 比 ``GCC`` 更严格地遵守 ``C`` 和 ``C++`` 标准。
+#. ``Clang`` 提供了其他有用的工具，例如，用于代码格式化的 ``clang-format``，静态语法分析的 ``clang-tidy`` （``CLion`` 和部分 ``IDE`` 帮你 **修改错误代码** 以及 **代码更改建议** 的功能）以及编辑器插件 ``Clangd``。
+#. ``Clang`` 提供更准确和友好的诊断信息，并突出显示错误消息，错误行，错误行提示和修改建议。:green:`当然该功能在 GCC8 里也变得较为成熟了。`
+#. ``Clang`` :red:`使用` ``BSD`` :red:`协议。相比于` ``GCC`` :red:`的` ``GPL`` :red:`协议，` ``BSD`` :red:`协议给予了使用者更多的自由。`
+#. ``Clang`` 开源代码风格比较好，读懂代码比较容易。
+
+基于 ``Clang`` 的最后两点优势，很多新编译器是基于或借鉴 ``Clang`` 开发的。
+:green:`两者对于一般用户使用起来没啥区别，对于开发编译器或者对代码底层很在意的人，两者有较大区别`。``Linux`` 环境下一般安装 ``GNU`` 工具链。
+
+
+安装GCC
 ^^^^^^^^^^^
 .. code-block:: bash
   
@@ -59,7 +83,7 @@ C++开发环境搭建
   # gcc g++ 也可以安装别的版本，安装非默认的版本 是不会在 /usr/bin 下创建 gcc g++ 对应的链接文件的，需要自己创建
   sudo apt install --no-install-recommends gcc-8 g++-8 gdb
 
-安装LLVM
+安装Clang
 ^^^^^^^^^^^
 .. code-block:: bash
   
@@ -80,11 +104,9 @@ VsCode开发C++
 ^^^^^^^^^^^
 ``VsCode`` 通过安装插件可以支持 ``C++`` 开发，至少需要安装以下3个插件：
 
-#. **C/C++**：提供C/C++ 智能提示, 代码调试等功能
-
-#. **CMake**：提供CMake语言支持
-
-#. **CMake Tools**：提供CMake工程创建、编译，智能提示等功能
+* **C/C++**：提供C/C++ 智能提示, 代码调试等功能
+* **CMake**：提供CMake语言支持
+* **CMake Tools**：提供CMake工程创建、编译，智能提示等功能
 
 创建CMake工程
 ^^^^^^^^^^^^^^^
@@ -129,6 +151,7 @@ Debug C++代码
 2. 在 ``launch.json`` 中写入调试相关配置：
 
 .. code-block:: json
+  :emphasize-lines: 5,8-10,13
 
   {
     "version": "0.2.0",
@@ -160,29 +183,15 @@ Debug C++代码
 * ``name``： debug 工程的名字，一般不用改。
 * ``program`` ：被 degbug的程序的路径，``${workspaceFolder}`` 是 CMake工程的根目录。
 * ``args``：程序命令行参数，如果有的话，例子： ``"args": ["${workspaceFolder}/1.yaml", "${workspaceFolder}/2.txt"]``。
-* ``externalConsole`` : debug 时是否打开一个新的终端。
+* ``stopAtEntry``：是否在进入 ``main`` 函数后默认有断点。
+* ``externalConsole`` : ``debug`` 时是否打开一个新的终端。
 
-3. 配置文件写好后，按 ``F5``，就可以进入调试了：
+3. 配置文件写好后，设置好断点，按 ``F5``，就可以进入调试了：
 
 .. image:: /_static/images/c++-8.png
 
 
 C++代码风格
 --------------
-参考 Google C++ 代码风格：`link <https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/>`_
+参考 `Google C++ 代码风格 <https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/>`_
 
-
-
-外部链接
-------------
-``GNU`` 官网：`GNU Operating System <https://www.gnu.org/home.en.html>`_
-
-``GCC`` 官网：`GCC, the GNU Compiler Collection <https://gcc.gnu.org/>`_
-
-``GDB`` 官网：`GDB: The GNU Project Debugger <https://www.gnu.org/software/gdb/>`_
-
-``LLVM`` 官网：`The LLVM Compiler Infrastructure <http://llvm.org/>`_
-
-``Clang`` 官网：`Clang: a C language family frontend for LLVM <https://clang.llvm.org/>`_
-
-``LLDB`` 官网：`The LLDB Debugger <https://lldb.llvm.org/>`_

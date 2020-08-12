@@ -38,11 +38,12 @@ Ubuntu基础软件安装(必须)
 建议在个人电脑上定期更新Package，在服务器上只在装机完成后更新一次即可。
 
 
-安装Nvidia显卡驱动
+安装NVIDIA显卡驱动
 ^^^^^^^^^^^^^^^^^^^^
-:red:`如果要做深度学习，在安装` ``cuda`` :red:`的时候会自动安装` ``Nvidia`` :red:`的显卡驱动，因此请跳过该步骤！！！` 
+.. warning::
+  如果要做深度学习，在安装 ``CUDA`` 的时候会自动安装 ``NVIDIA`` 的显卡驱动，因此请跳过该步骤！！！
 
-通过 ``Ubuntu`` 自带的软件 ``Software & Updates`` 就可以安装 ``Nvidia`` 显卡驱动。
+通过 ``Ubuntu`` 自带的软件 ``Software & Updates`` 就可以安装 ``NVIDIA`` 显卡驱动。
 
 在 ``Software & Updates`` 中选择 ``Additional Drivers``，选中想安装的显卡驱动，点击 ``Apply Changes`` 后就会安装显卡驱动。等待安装完成后，重启系统，显卡驱动就会生效。
 
@@ -73,12 +74,17 @@ Ubuntu基础软件安装(必须)
 
 .. image:: /_static/images/base-4.png
 
+:green:`建议打开` ``Remember every input as a phrase`` :green:`功能，该功能会让输入法记录用户已经输入过但不存在与内置词典中的短语：`
+
+.. image:: /_static/images/base-10.png
+
+
 
 安装Chrome浏览器
 ^^^^^^^^^^^^^^^^^^^^
 ``Ubuntu`` 自带 ``Firefox`` 浏览器，由于后续代理配置相关内容使用 ``Chrome`` 浏览器较为方便，因此建议更改浏览器。
 
-``Chrome`` 浏览器下载地址：`chrome官网 <https://www.google.cn/chrome/>`_，点击 ``下载Chrome`` ，选择``64位.deb包``，最后点 ``接受并安装``。 下载好的安装包默认放在 ``~/Downloads`` 目录下，执行安装命令：
+``Chrome`` 浏览器下载地址：`chrome官网 <https://www.google.cn/chrome/>`_，点击 ``下载Chrome`` ，选择 ``64位.deb包``，最后点 ``接受并安装``。 下载好的安装包默认放在 ``~/Downloads`` 目录下，执行安装命令：
 
 .. code-block:: bash
 
@@ -127,7 +133,7 @@ Ubuntu基础软件安装(必须)
 
 VsCode插件
 >>>>>>>>>>>>
-点击 ``VsCode`` 的 ``左侧边栏`` 的 ``Extensions(插件)`` 选项可以进入插件的搜索和安装：
+点击 ``VsCode`` 的 ``左侧边栏`` 的 ``Extensions(扩展)`` 选项可以进入插件的搜索和安装：
 
 .. image:: /_static/images/base-5.png
 
@@ -136,6 +142,7 @@ VsCode插件
 * Chinese (Simplified) Language Pack for Visual Studio Code
 * C/C++
 * Python
+* CMake
 
 VsCode主题
 >>>>>>>>>>>>>

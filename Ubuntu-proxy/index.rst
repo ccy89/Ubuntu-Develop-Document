@@ -1,11 +1,8 @@
 Ubuntu代理配置
 ----------------
 
-V2ray配置系统代理(必须)
-^^^^^^^^^^^^^^^^^^^^^^^
-
 V2ray简介
->>>>>>>>>>
+^^^^^^^^^^^^
 **Project V** 是一个工具集合，它可以打造专属的基础通信网络。**Project V** 的核心工具称为 ``V2Ray``，其主要负责网络协议和功能的实现，与其它组件通信。``V2Ray`` 可以单独运行，也可以和其它工具配合，以提供简便的操作流程。
 其官网链接为 `www.v2ray.com <https://www.v2ray.com/>`_ (需要翻墙)。
 
@@ -35,6 +32,10 @@ V2ray **主要特性**：
 * **反向代理**: 通用的反向代理支持，可实现内网穿透功能。
 * **多平台支持**: 原生支持 ``Windows``、``Mac OS``、``Linux``，第三方支持移动平台。
 
+
+V2ray配置系统代理(必须)
+^^^^^^^^^^^^^^^^^^^^^^^
+
 V2ray安装
 >>>>>>>>>>>>>
 .. code-block:: bash
@@ -45,7 +46,7 @@ V2ray安装
   sudo ./v2ray_install.sh     # 运行安装脚本，脚本会从github上下载 V2ray Core
   rm v2ray_install.sh         # 删除安装脚本
 
-:red:`如果在运行安装脚本的时候下载速度很慢，可以自行先去github上下载` ``V2ray core``， 网址为 `https://github.com/v2ray/v2ray-core/releases <https://github.com/v2ray/v2ray-core/releases>`_ ，
+:red:`如果在运行安装脚本的时候下载速度很慢，可以自行先去github上下载` ``V2ray core``， 网址为 https://github.com/v2ray/v2ray-core/releases，
 下载最新版本的 ``v2ray-linux-64.zip``。
 
 .. image:: /_static/images/proxy-1.png
@@ -71,6 +72,18 @@ V2ray安装
 /etc/systemd/system/v2ray.service   开机自启动文件
 ==================================  ======================= 
 
+
+修改V2ray服务状态
+>>>>>>>>>>>>>>>>>>>>>
+.. code-block:: bash
+
+  sudo systemctl status v2ray.service     # 查看 V2ray 服务状态
+  sudo systemctl start v2ray.service      # 启动 V2ray 服务
+  sudo systemctl restart v2ray.service    # 重启 V2ray 服务
+  sudo systemctl stop v2ray.service       # 停用 V2ray 服务
+  sudo systemctl disable v2ray.service    # 卸载 V2ray 服务
+
+
 V2ray卸载
 >>>>>>>>>>>
 .. code-block:: bash
@@ -90,6 +103,9 @@ V2ray客户端配置
 
 .. literalinclude:: /_static/v2ray-config.json
   :language: json
+  :emphasize-lines: 36,40,55
+
+:red:`该文件中高亮部分需要按照自己的服务器配置填写`。 
 
 在配置文件中定义了如下信息：
 
@@ -105,7 +121,8 @@ V2ray客户端配置
 
   sudo systemctl restart v2ray.service  # 重启 V2ray 服务
 
-:red:`注意`： ``V2ray`` :red:`代理有时间校验机制。服务器为北京时间，因此本地机器也要保证系统时间为北京时间。`
+.. important::
+  ``V2ray`` 代理有时间校验机制。如果服务器为北京时间，则本地机器也要保证系统时间为北京时间
 
 
 浏览器使用代理(必须)
@@ -114,7 +131,7 @@ V2ray客户端配置
 使用全局代理
 >>>>>>>>>>>>>>
 开启 ``Ubuntu Network`` 的全局代理： 在 ``Ubuntu`` 的 ``Settings`` 中，选择 ``Network`` ，修改 ``Network Proxy`` 为 ``Manual``，
-设置其中的 ``Socks Host`` 地址为 ``127.0.0.1``，端口号为 ``1080``。 可以通过访问 `谷歌 <www.google.com>`_ 来测试代理。
+设置其中的 ``Socks Host`` 地址为 ``127.0.0.1``，端口号为 ``1080``。 可以通过访问 `谷歌 <https://www.google.com/>`_ 来测试代理。
 
 .. image:: /_static/images/proxy-2.png
   :height: 300
@@ -162,7 +179,7 @@ V2ray客户端配置
 .. image:: /_static/images/proxy-6.png
   :align: center
 
-现在处于网络防火长城中的网站将通过代理访问，其他网站将直接访问。 同样的可以通过访问 `谷歌 <www.google.com>`_ 测试代理。
+现在处于网络防火长城中的网站将通过代理访问，其他网站将直接访问。 同样的可以通过访问谷歌（https://www.google.com/） 测试代理。
 
 
 灵活利用 SwitchyOmega
@@ -266,7 +283,7 @@ Shell 终端使用代理
 apt 使用代理
 ^^^^^^^^^^^^^^^^^^^
 
-虽然 ``Ubuntu`` 系统 ``package`` 在国内有镜像源，例如清华大学的镜像源，但是部分自己安装的第三方的软件的软件源在国外，例如 ``VsCode``，使用 ``apt`` 获取时速度会很慢甚至直接无法获取，这时可以使用代理对其进行访问。
+虽然 ``Ubuntu`` 官方源的 ``package`` 在国内有镜像源，例如清华大学镜像源，但是部分自己安装的第三方的软件的软件源在国外，例如 ``VsCode``，使用 ``apt`` 获取时速度会很慢甚至直接无法获取，这时可以使用代理对其进行访问。
 
 和终端一样，``apt`` 发起的网络请求不支持 ``socks5`` 代理，只支持 ``http/https`` 代理。同时虽然 ``apt`` :red:`命令是在终端执行的，却不是和终端共享代理配置，需要单独配置。`
 
