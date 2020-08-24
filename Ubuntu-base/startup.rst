@@ -2,7 +2,7 @@ Ubuntu启动配置
 ----------------
 双系统索引
 ^^^^^^^^^^^^
-``Ubuntu`` 采用 ``grub`` 管理系统的引导项，默认情况下 ``grub`` 是可以检索到 ``Windows`` 引导的。如果在 ``Bios``里把 ``Ubuntu`` 放在第一启动顺序，那么在开机的时候会出现 ``grub`` 启动界面：
+``Ubuntu`` 采用 ``grub`` 管理系统的引导项，默认情况下 ``grub`` 是可以检索到 ``Windows`` 引导的。如果在 ``Bios`` 里把 ``Ubuntu`` 放在第一启动顺序，那么在开机的时候会出现 ``grub`` 启动界面：
 
 .. image:: /_static/images/startup-1.png
 

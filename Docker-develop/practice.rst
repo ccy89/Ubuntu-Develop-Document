@@ -123,7 +123,7 @@
 
 **6. 利用容器环境开发VINS**
 
-**6.1 VsCode 连接已经运行的容器 ``vins``**
+**6.1 VsCode 连接已经运行的容器**
 
 .. image:: /_static/images/docker-20.png
 

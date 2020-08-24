@@ -35,8 +35,6 @@ Ubuntu界面美化(可选)
 .. image:: /_static/images/gnome-4.png
   :align: center
 
-
-
 :orange:`推荐插件：`
 
 * **User Themes**：允许 ``Gnome Shell`` 使用 桌面的 ``Theme`` 
@@ -52,7 +50,7 @@ Ubuntu界面美化(可选)
 .. image:: /_static/images/gnome-5.png
   :align: center
 
-``Ubuntu`` 内置一些桌面主题（一般都挺丑的），也可以在网上(`pling-theme <https://www.pling.com/browse/cat/366/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/themes`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
+``Ubuntu`` 内置一些桌面主题（除了 ``Ubuntu 20.04`` 的 ``Yaru`` 主题，一般都挺丑的），也可以在网上(`pling-theme <https://www.pling.com/browse/cat/366/order/latest/>`_)下载第三方的主题。下载好的主题解压出来后拷贝到 ``/usr/share/themes`` 目录下，就可以通过 ``gnome-tweak`` 进行修改。
 
 修改Ubuntu Icon(图标)主题
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

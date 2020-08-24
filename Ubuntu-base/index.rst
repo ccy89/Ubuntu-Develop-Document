@@ -10,5 +10,6 @@ Ubuntu系统安装和基本配置
   install
   base
   startup
+  vscode
   zsh
   gnome

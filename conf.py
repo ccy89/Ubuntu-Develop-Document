@@ -77,3 +77,6 @@ html_static_path = ['_static']
 rst_prolog = """
 .. include:: /_static/custom-style.rst
 """
+
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'xcode'

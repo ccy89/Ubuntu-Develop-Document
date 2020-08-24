@@ -1,4 +1,4 @@
-Ubuntu基础软件安装(必须)
+Ubuntu基础软件安装
 --------------------------
 
 修改镜像源
@@ -76,7 +76,7 @@ Ubuntu基础软件安装(必须)
 
 :green:`建议打开` ``Remember every input as a phrase`` :green:`功能，该功能会让输入法记录用户已经输入过但不存在与内置词典中的短语：`
 
-.. image:: /_static/images/base-10.png
+.. image:: /_static/images/base-5.png
 
 
 
@@ -112,49 +112,6 @@ Ubuntu基础软件安装(必须)
   sudo apt install --no-install-recommends git
 
 
-安装VsCode
-^^^^^^^^^^^^^^^
-``VsCode`` 是 ``MicroSoft`` 推出的一款 :red:`免费的全平台文本编辑器`，由于其可以通过安装插件的方式实现各种功能，相比于传统的 ``IDE`` 软件，具有小巧高效的优点。
-
-之后所有的开发环境都将基于 ``VsCode`` 进行。
-
-安装
->>>>>>>
-直接去官网上下载 ``.deb`` 包，官网链接：`vscode官网 <https://code.visualstudio.com/>`_ 。 下载完后执行安装命令：
-
-.. code-block:: bash
-
-  # 注意这里的 deb包名称用Tab补全成自己下载的
-  sudo dpkg -i ~/Downloads/code安装包.deb      # 安装 vscode浏览器
-  sudo apt remove --purge gedit gedit-common  # 卸载 Ubuntu默认文本编辑器gedit
-  sudo apt autoremove --purge                 # 清除无效的依赖包
-  rm -r .config/gedit                         # 删除 gedit的配置文件
-
-
-VsCode插件
->>>>>>>>>>>>
-点击 ``VsCode`` 的 ``左侧边栏`` 的 ``Extensions(扩展)`` 选项可以进入插件的搜索和安装：
-
-.. image:: /_static/images/base-5.png
-
-:red:`推荐安装的插件：`
-
-* Chinese (Simplified) Language Pack for Visual Studio Code
-* C/C++
-* Python
-* CMake
-
-VsCode主题
->>>>>>>>>>>>>
-``VsCode`` 可以修改颜色主题，其内置了部分颜色主题：
-
-.. image:: /_static/images/base-6.png
-
-也可以通过 ``插件`` 的形式安装其他的颜色主题。在插件中搜索 ``theme`` 就可以找到其他颜色主题：
-
-.. image:: /_static/images/base-7.png
-
-
 Linux Kernel 安装和卸载
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在 ``Ubuntu`` 更新系统和软件包的时候有时会更新 ``Ubuntu`` 的 ``Linux Kernel``，导致系统存在冗余的 ``Kernel``。
@@ -164,13 +121,13 @@ Linux Kernel 安装和卸载
 
 利用 ``dpkg -l | grep linux-image`` 查看当前系统所有的 ``Kernel``
 
-.. image:: /_static/images/base-8.png
+.. image:: /_static/images/base-6.png
 
 可以看到当前系统有 ``4.18.0-25`` 和 ``5.4.0-42`` 两个版本的内核。
 
 利用 ``uname -r`` 可以查看当前正在使用的 ``Kernel`` 版本：
 
-.. image:: /_static/images/base-9.png
+.. image:: /_static/images/base-7.png
 
 
 卸载 Kernel

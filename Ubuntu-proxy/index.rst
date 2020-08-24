@@ -41,10 +41,12 @@ V2ray安装
 .. code-block:: bash
 
   sudo apt install --no-install-recommends curl           # 安装 curl
-  curl https://install.direct/go.sh -o v2ray_install.sh   # 下载 V2ray 官方安装脚本
-  chmod +x v2ray_install.sh   # 给安装脚本可执行权限
-  sudo ./v2ray_install.sh     # 运行安装脚本，脚本会从github上下载 V2ray Core
-  rm v2ray_install.sh         # 删除安装脚本
+  curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh   # 下载 V2ray 官方安装脚本
+  sudo bash install-release.sh    # 运行安装脚本，脚本会从github上下载 V2ray Core
+  rm v2ray_install.sh             # 删除安装脚本
+  sudo systemctl enable v2ray     # 激活 V2ray服务
+  sudo systemctl start v2ray      # 启动 V2ray服务
+  sudo systemctl status v2ray     # 查看 V2ray服务状态
 
 :red:`如果在运行安装脚本的时候下载速度很慢，可以自行先去github上下载` ``V2ray core``， 网址为 https://github.com/v2ray/v2ray-core/releases，
 下载最新版本的 ``v2ray-linux-64.zip``。
@@ -57,20 +59,24 @@ V2ray安装
 
 .. code-block:: bash
 
-  sudo ./v2ray_install.sh --local ~/Downloads/v2ray-linux-64.zip   # 运行安装脚本，脚本从本地安装 V2ray Core
-  rm v2ray_install.sh   # 删除安装脚本
+  sudo bash install-release.sh -l ~/Downloads/v2ray-linux-64.zip   # 运行安装脚本，脚本从本地安装 V2ray Core
+  rm v2ray_install.sh                 # 删除安装脚本
   rm ~/Downloads/v2ray-linux-64.zip   # 删除 V2ray core 安装包
+  sudo systemctl enable v2ray         # 激活 V2ray服务
+  sudo systemctl start v2ray          # 启动 V2ray服务
+  sudo systemctl status v2ray         # 查看 V2ray服务状态
 
 安装脚本会自动安装以下文件：
 
-==================================  ======================= 
-/usr/bin/v2ray/v2ray                ``V2Ray`` 程序
-/usr/bin/v2ray/v2ctl                ``V2Ray`` 工具
-/etc/v2ray/config.json              配置文件
-/usr/bin/v2ray/geoip.dat            数据文件
-/usr/bin/v2ray/geosite.dat          域名数据文件
-/etc/systemd/system/v2ray.service   开机自启动文件
-==================================  ======================= 
+======================================  ======================= 
+/usr/local/bin/v2ray/v2ray                  ``V2Ray`` 程序
+/usr/local/bin/v2ray/v2ctl                  ``V2Ray`` 工具
+/usr/local/etc/v2ray/config.json            配置文件
+/usr/local/share/v2ray/geoip.dat            数据文件
+/usr/local/share/v2ray/geosite.dat          域名数据文件
+/var/log/v2ray/                             日志目录
+/etc/systemd/system/v2ray.service           开机自启动文件
+======================================  ======================= 
 
 
 修改V2ray服务状态
@@ -88,18 +94,17 @@ V2ray卸载
 >>>>>>>>>>>
 .. code-block:: bash
 
-  sudo systemctl stop v2ray.service       # 停用 V2ray 服务
-  sudo systemctl disable v2ray.service    # 卸载 V2ray 服务
-  sudo rm -rf /etc/v2ray/*        # 删除 配置文件
-  sudo rm -rf /usr/bin/v2ray/*    # 删除 程序
-  sudo rm -rf /var/log/v2ray/*    # 删除 日志
-  sudo rm -rf /lib/systemd/system/v2ray.service   # 删除 开机启动项
+  curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh   # 下载卸载用的脚本，和安装脚本是同一个
+  sudo bash install-release.sh --remove     # 卸载 V2ray 服务
+  sudo systemctl disable v2ray              # 停止 V2ray 服务
+  sudo rm -rf /usr/local/etc/v2ray/         # 删除 配置文件
+  sudo rm -rf /var/log/v2ray/               # 删除 日志
 
 
 V2ray客户端配置
 >>>>>>>>>>>>>>>>
 
-修改 ``/etc/v2ray/config.json`` 配置文件，和服务器端对接，以实现代理功能。由于服务器端使用的是 ``WebSocket + TLS`` 模式，因此配置参考如下：
+修改 ``/usr/local/etc/v2ray/config.json`` 配置文件，和服务器端对接，以实现代理功能。由于服务器端使用的是 ``WebSocket + TLS`` 模式，因此配置参考如下：
 
 .. literalinclude:: /_static/v2ray-config.json
   :language: json
@@ -182,7 +187,7 @@ V2ray客户端配置
 现在处于网络防火长城中的网站将通过代理访问，其他网站将直接访问。 同样的可以通过访问谷歌（https://www.google.com/） 测试代理。
 
 
-灵活利用 SwitchyOmega
+灵活使用 SwitchyOmega
 >>>>>>>>>>>>>>>>>>>>>>>>>
 
 虽然部分国外网站可以直接访问，但是访问速度很慢，例如很多公开的数据集网站，直接访问下载速度很慢，可以用过代理进行加速。
